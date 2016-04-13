@@ -1,3 +1,4 @@
 
 def score(balls):
-    return 0
+    score = balls[0][0] + balls[0][1]
+    return score
