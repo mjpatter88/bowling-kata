@@ -13,3 +13,9 @@ class BowlingTest(unittest.TestCase):
         self.balls[0] = (5, 3)
         score = bowling.score(self.balls)
         self.assertEquals(score, 8, "Five and three should result in a score of 8.")
+
+    def test_score__adds_two_frames_together(self):
+        self.balls[0] = (5, 3)
+        self.balls[1] = (8, 1)
+        score = bowling.score(self.balls)
+        self.assertEquals(score, 17, "Two frames should be added together.")
