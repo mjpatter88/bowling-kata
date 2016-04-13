@@ -1,4 +1,4 @@
 
 def score(balls):
-    score = balls[0][0] + balls[0][1]
+    score = sum((sum(ball) for ball in balls))
     return score
