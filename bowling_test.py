@@ -20,8 +20,14 @@ class BowlingTest(unittest.TestCase):
         score = bowling.score(self.frames)
         self.assertEquals(score, 17, "Two frames should be added together.")
 
-    def test_score__adds_the_first_throw_from_the_next_frame_to_the_current_frame_total_if_spare(self):
+    def test_score__adds_the_next_throw_twice_if_spare(self):
         self.frames[0] = (9, 1)
         self.frames[1] = (5, 3)
         score = bowling.score(self.frames)
         self.assertEquals(score, 23, "Spare frame should add next throw to total.")
+
+    def test_score__adds_the_next_two_throws_twice_if_strike(self):
+        self.frames[0] = (10, 0)
+        self.frames[1] = (5, 3)
+        score = bowling.score(self.frames)
+        self.assertEquals(score, 26, "Strike frame should add next two throws to total.")
