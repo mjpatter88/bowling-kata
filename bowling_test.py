@@ -31,3 +31,9 @@ class BowlingTest(unittest.TestCase):
         self.frames[1] = (5, 3)
         score = bowling.score(self.frames)
         self.assertEquals(score, 26, "Strike frame should add next two throws to total.")
+
+    def test_score__correctly_scores_perfect_game_as_300(self):
+        frames = [(10,0)] * 13
+        score = bowling.score(frames)
+        self.assertEquals(score, 300, "Perfect game results in score of 300.")
+
