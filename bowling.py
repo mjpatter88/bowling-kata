@@ -1,4 +1,4 @@
 
-def score(balls):
-    score = sum((sum(ball) for ball in balls))
+def score(frames):
+    score = sum((sum(frame) for frame in frames))
     return score
