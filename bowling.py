@@ -1,23 +1,24 @@
 
 def score(frames):
     score = 0
-    next_throws_to_double = 0
-    for frame in frames:
-        if next_throws_to_double:
-            score += sum(frame[:next_throws_to_double])
-            next_throws_to_double -= throws_in_frame(frame)
-        if is_strike(frame):
-            next_throws_to_double += 2
-        elif is_spare(frame):
-            next_throws_to_double += 1
+    for index, frame in enumerate(frames[:10]):
         score += sum(frame)
+        if is_spare(frame):
+            score += frames[index + 1][0]
+        if is_strike(frame):
+            next_frame = frames[index + 1]
+            if index == 9:
+                score += sum(next_frame)
+            else:
+                if is_strike(next_frame):
+                    score = score + next_frame[0] + frames[index + 2][0]
+                else:
+                    score += sum(next_frame)
     return score
 
 def is_spare(frame):
-    return sum(frame) == 10
+    return sum(frame) == 10 and not is_strike(frame)
 
 def is_strike(frame):
     return frame[0] == 10
 
-def throws_in_frame(frame):
-    return 1 if is_strike(frame) else 2
