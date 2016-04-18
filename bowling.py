@@ -1,3 +1,4 @@
+LAST_FRAME_INDEX = 9
 
 def score(frames):
     score = 0
@@ -7,7 +8,7 @@ def score(frames):
             score += frames[index + 1][0]
         if is_strike(frame):
             next_frame = frames[index + 1]
-            if index == 9:
+            if index == LAST_FRAME_INDEX:
                 score += sum(next_frame)
             else:
                 if is_strike(next_frame):
